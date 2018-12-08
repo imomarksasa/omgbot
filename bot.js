@@ -16,6 +16,104 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help") {
+      if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
+     message.channel.send('**تم ارسال رسالة في الخاص**');
+
+
+
+
+ message.author.sendMessage(`
+ **
+[❖═════ General Commands ═══════❖]
+
+ #id معلومات عن حسابك الشخصي
+
+ #server معلومات حول السيرفر
+ 
+ #move سحب عضو الى رومك الصوتي
+
+ #clear مسح الرسائل الموجوده في الروم بعدد
+
+ #avatar يعرض اك صورتك الشخصية
+ 
+ #image يعرض لك صورة السيرفر
+ 
+ #credit يوريك كم الكريديت حقتك
+
+ #daily يسوي لك سحب فلوس
+
+ #rep يعطي ريب
+
+ #profile معلومات عامة مع الصورة
+ 
+[❖═════ Administrator Commands ═══════❖]
+
+ #ban حضر عضو من السيرفر
+ 
+ #kick طرد عضو من السيرفر
+ 
+ #mute اعضاء ميوت كتابي لعضو في السيرفر
+ 
+ #unmute فك الميوت عن عضو في السيرفر
+ 
+ #dac حذف جميع رومات السيرفر
+ 
+ #dar حذف جميع رتب السيرفر
+ 
+ #openroom فتح المحادثة في الروم
+ 
+ #closeroom قفل المحادثة في الرةوم
+
+ #role اعطاء رتبه لشخض معين
+ 
+ #role humans اعطاء رتب للبشريين
+ 
+ #role bots اعطاء رتبه للبوتات
+ 
+ #role all اعطاء رتبه للجميع سواء بشر او بوتات
+ 
+[❖═════ Other ═══════❖]
+
+ #support رابط سيرفر الدعم الفني
+ 
+ #invite رابط اضافة البوت
+
+ **`);
+
+    }
+});
+client.on('message', message => { 
+           if (message.content.startsWith(prefix + "id")) {
+     var args = message.content.split(" ").slice(1);
+     let user = message.mentions.users.first();
+     var men = message.mentions.users.first();
+        var heg;
+        if(men) {
+            heg = men
+        } else {
+            heg = message.author
+        }
+      var mentionned = message.mentions.members.first();
+         var h;
+        if(mentionned) {
+            h = mentionned
+        } else {
+            h = message.member
+        }
+               moment.locale('ar-TN');
+      var id = new  Discord.RichEmbed()
+      .setAuthor(message.author.username, message.author.avatarURL) 
+    .setColor("#707070")
+    .addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
+    .addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
+    .setFooter(`OverBot`, 'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')                                 
+    .setThumbnail(heg.avatarURL);
+    message.channel.send(id)
+}       });
+
+client.on('message', message => {
   if (message.content.startsWith(prefix +"avatar")) {
 if(!message.channel.guild) return;
       var mentionned = message.mentions.users.first();

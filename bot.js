@@ -67,75 +67,7 @@ client.on('message', message => {
         }
 });
 
-client.on('message', message => {
-    if (message.author.bot) return;
-     if (message.content === prefix + "help") {
-      if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-     message.channel.send('**تم ارسال رسالة في الخاص**');
 
-
-
-
- message.author.sendMessage(`
- **
-[❖═════ General Commands ═══════❖]
-
- #id معلومات عن حسابك الشخصي
-
- #server معلومات حول السيرفر
- 
- #move سحب عضو الى رومك الصوتي
-
- #clear مسح الرسائل الموجوده في الروم بعدد
-
- #avatar يعرض اك صورتك الشخصية
- 
- #image يعرض لك صورة السيرفر
- 
- #credit يوريك كم الكريديت حقتك
-
- #daily يسوي لك سحب فلوس
-
- #rep يعطي ريب
-
- #profile معلومات عامة مع الصورة
- 
-[❖═════ Administrator Commands ═══════❖]
-
- #ban حضر عضو من السيرفر
- 
- #kick طرد عضو من السيرفر
- 
- #mute اعضاء ميوت كتابي لعضو في السيرفر
- 
- #unmute فك الميوت عن عضو في السيرفر
- 
- #dac حذف جميع رومات السيرفر
- 
- #dar حذف جميع رتب السيرفر
- 
- #openroom فتح المحادثة في الروم
- 
- #closeroom قفل المحادثة في الرةوم
-
- #role اعطاء رتبه لشخض معين
- 
- #role humans اعطاء رتب للبشريين
- 
- #role bots اعطاء رتبه للبوتات
- 
- #role all اعطاء رتبه للجميع سواء بشر او بوتات
- 
-[❖═════ Other ═══════❖]
-
- #support رابط سيرفر الدعم الفني
- 
- #invite رابط اضافة البوت
-
- **`);
-
-    }
-});
 client.on('message', message => { 
            if (message.content.startsWith(prefix + "id")) {
      var args = message.content.split(" ").slice(1);
@@ -186,7 +118,7 @@ client.on('message', message => {
   let embed = new Discord.RichEmbed()
 .setAuthor(message.author.username)
 .setColor("#9B59B6")
-.addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/NgdvJy3**")
+.addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/juUtqMV**")
   
   
 message.channel.sendEmbed(embed);
@@ -194,7 +126,7 @@ message.channel.sendEmbed(embed);
 });
 
 client.on('message', message => {
-         if(message.content === prefix + "closeroom") {
+         if(message.content === prefix + "cr") {
                              if(!message.channel.guild) return message.reply('** This command only for servers**');
   
      if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
@@ -205,7 +137,7 @@ client.on('message', message => {
                     message.reply("**__تم تقفيل الشات__ :white_check_mark: **")
                 });
                   }
-      if(message.content === prefix + "openroom") {
+      if(message.content === prefix + "or") {
                           if(!message.channel.guild) return message.reply('** This command only for servers**');
   
      if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');

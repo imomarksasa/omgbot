@@ -38,7 +38,8 @@ client.on('message', message => {
        let embed = new Discord.RichEmbed()
         let args = message.content.split(' ').slice(1).join(' ');
     if(message.content.split(' ')[0] == prefix + 'bc') {
-        if (!args[1]) {
+        if (!args[1]) {	
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(' **__ليس لديك صلاحيات__**');		
     message.channel.send("**+bc <message>**");
     return;
     }
